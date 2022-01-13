@@ -7,21 +7,34 @@ budget_data_path = os.path.join(pathlib.Path(__file__).parent.resolve(), "..", "
 
 #open the csv file
 with open(budget_data_path, "r") as budget_csv:
-    csv_reader = csv.reader(budget_csv, delimiter=',')
 
-    header = next(csv_reader)
+    #look at the csv file's budget data and setting it up as a list
+    data = list(csv.reader(budget_csv))
+    #this is skipping the header
+    data = data[1:]
 
-    for row in csv_reader:
-        print(row)
-    #the total number of months included in the dataset
+#print(data)        
+            
+total_months = len(data)    
+total_amount = 0
+profit_loss_column = []   
 
-    #the net total amount of "Profit/Losses" over the entire period
+for row in data:
+    #this is adding up all the volumes in the profit colum
+    #total_amount = total_amount + int[(row[1])]
+    total_amount += int(row[1])
+    profit_loss_column.append(int(row[1]))
 
-    #Calculate the changes in "Profit/Losses" 
-    #over the entire period, then find the average of those changes
+#print(total_amount)   
+#print(total_months)
 
+#the greatest increase in profits (date and amount) over the entire period
+greatest_increase = max(profit_loss_column)
+date_increase = data[profit_loss_column.index(greatest_increase)][0]
 
-    #the greatest increase in profits (date and amount) over the entire period
+#the greatest decrease in profits (date and amount) over the entire period
+greatest_decrease = min(profit_loss_column)
+date_decrease = data[profit_loss_column.index(greatest_decrease)][0]
 
-
-    #the greatest decrease in profits (date and amount) over the entire period
+#calculating the average change
+average_loss = total_amount / total_months

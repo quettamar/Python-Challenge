@@ -7,15 +7,21 @@ election_data_path = os.path.join(pathlib.Path(__file__).parent.resolve(), "..",
 
 #open the csv file
 with open(election_data_path, "r") as election_data_csv:
-    csv_reader = csv.reader(election_data_csv)
+    csv_reader = list(csv.reader(election_data_csv))
 
-    
-    for line in csv_reader:
+data = csv_reader[1:]
 
-        print(line)
-#the total number of votes cast
+total_votes = len(data)
+candidates = {}
+max_value = 0
+winner = ''
 
-#a complete list of candidates who received votes
+#loop through to complete a list of candidates who received votes
+for line in data:
+    if line[2] not in candidates:
+        candidates[line[2]] = 1
+    else:
+        candidates[line[2]] += 1
 
 #the percentage of votes each candidate won
 
