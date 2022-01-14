@@ -1,0 +1,6 @@
+Financial Analysis
+----------------------------------
+Your profit is: $38382578
+Total Months 86
+Greatest Increase in Profits: ($Feb-2012)
+Greatest Decrease in Profits: ($Sep-2013)

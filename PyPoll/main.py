@@ -28,3 +28,5 @@ for line in data:
 #the total number of votes each candidate won
 
 #the winner of the election based on popular vote.
+
+#create a txt file with the election results
