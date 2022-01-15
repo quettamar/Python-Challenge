@@ -1,4 +1,3 @@
-from audioop import avg
 import os
 import csv
 import pathlib
@@ -27,23 +26,22 @@ for row in data:
     profit_loss_column.append(int(row[1]))
 
     profit_change.append(int(row[1])-profit_loss)
-    profit_loss = int(row[1])
+    profit_loss = int(row[1]) 
     
-    
-
+profit_change.pop(0)
 #the greatest increase in profits (date and amount) over the entire period
 greatest_increase = max(profit_change)
-date_increase = data[profit_change.index(greatest_increase)][0]
-
+print(profit_change.index(greatest_increase))
+date_increase = data[profit_change.index(greatest_increase)+1][0]
 #the greatest decrease in profits (date and amount) over the entire period
 greatest_decrease = min(profit_change)
-date_decrease = data[profit_change.index(greatest_decrease)][0]
+date_decrease = data[profit_change.index(greatest_decrease)+1][0]
 
 #calculating the average change
 total_change = sum(profit_change)
 #come back and figure out why you're getting a positive number
-profit_average_change = total_change / total_months
-
+profit_average_change = total_change / len(profit_change)
+print(profit_average_change)
 #create a txt file with the budget analysis results
 f = open(r"C:\\Users\marqu\OneDrive\Desktop\Repositories\Python-Challenge\PyBank\Analysis\budget_results.txt", "w")
 

@@ -1,6 +1,7 @@
 import os
 import csv
 import pathlib
+from statistics import mode
 
 #define file path
 election_data_path = os.path.join(pathlib.Path(__file__).parent.resolve(), "..", "PyPoll", "Resources", "election_data.csv")
@@ -21,6 +22,9 @@ for line in data:
     else:
         candidates[line[2]] += 1
 
+#determine the winner off votes
+winner = mode(candidates)
+
 #the percentage of votes each candidate won
 khan = ((candidates["Khan"])/total_votes)
 correy = ((candidates["Correy"])/total_votes)
@@ -39,6 +43,7 @@ correy_votes = (candidates["Correy"])
 li_votes = (candidates["Li"])
 tooley_votes = (candidates["O'Tooley"])
 
+#print out the results
 print(f"Election Result")
 print("-"*25)
 print(f"Total Votes: {total_votes}")
@@ -48,11 +53,10 @@ print(f"Correy: {correy_percentage}% ({correy_votes})")
 print(f"Li: {li_percentage}% ({li_votes})")
 print(f"O' Tooley: {tooley_percentage}% ({tooley_votes})")
 print(f"    ")
-print(f"Winner = Khan")
+print(f"Winner = {winner}")
 print("-"*25)
 
 #create a txt file with the election results
-#come back later to figure out how to change directories
 f = open(r"C:\\Users\marqu\OneDrive\Desktop\Repositories\Python-Challenge\PyPoll\Analysis\election_results.txt","w")
 f.write(f"Election Results\n")
 f.write("-------------------------\n")
@@ -63,6 +67,6 @@ f.write(f"Correy: {correy_percentage}% ({correy_votes})\n")
 f.write(f"Li: {li_percentage}% ({li_votes})\n")
 f.write(f"O' Tooley: {tooley_percentage}% ({tooley_votes})\n")
 f.write("-------------------------\n")
-f.write("Winner: Khan\n")
+f.write(f"Winner: {winner}\n")
 
 f.close
