@@ -53,7 +53,7 @@ print("-"*25)
 
 #create a txt file with the election results
 #come back later to figure out how to change directories
-f = open("election_results.txt","w")
+f = open(r"C:\\Users\marqu\OneDrive\Desktop\Repositories\Python-Challenge\PyPoll\Analysis\election_results.txt","w")
 f.write(f"Election Results\n")
 f.write("-------------------------\n")
 f.write(f"Total Votes: {total_votes}\n")

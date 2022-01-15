@@ -41,7 +41,8 @@ average_loss = total_amount / total_months
 
 #come back later to figure out how to change directories to the analysis folder
 #results_path = os.path.join(pathlib.Path(__file__).parent.resolve(), "..", "PyBank", "Analysis")
-f = open("budget_results.txt", "w")
+#f = open("budget_results.txt", "w")
+f = open(r"C:\\Users\marqu\OneDrive\Desktop\Repositories\Python-Challenge\PyBank\Analysis\budget_results.txt", "w")
 
 f.write(f"Financial Analysis\n")
 f.write("----------------------\n")
