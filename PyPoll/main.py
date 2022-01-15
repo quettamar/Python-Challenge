@@ -10,8 +10,10 @@ election_data_path = os.path.join(pathlib.Path(__file__).parent.resolve(), "..",
 with open(election_data_path, "r") as election_data_csv:
     csv_reader = list(csv.reader(election_data_csv))
 
+#skips the header
 data = csv_reader[1:]
 
+#calculating total votes and setting up dictionary
 total_votes = len(data)
 candidates = {}
 

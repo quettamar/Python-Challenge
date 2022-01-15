@@ -12,36 +12,38 @@ with open(budget_data_path, "r") as budget_csv:
     data = list(csv.reader(budget_csv))
     #this is skipping the header
     data = data[1:]      
-            
+
+#declaring variables and setting up lists          
 total_months = len(data)    
 total_amount = 0
 profit_loss_column = []  
 profit_change = []
 profit_loss = 0
 
+#looping through all the data
 for row in data:
-    #this is adding up all the volumes in the profit colum
-    #total_amount = total_amount + int[(row[1])]
+    #this is adding up all the volumes in the profit loss and profit change column
     total_amount += int(row[1])
     profit_loss_column.append(int(row[1]))
 
     profit_change.append(int(row[1])-profit_loss)
     profit_loss = int(row[1]) 
-    
+
+#adjusting the index    
 profit_change.pop(0)
+
 #the greatest increase in profits (date and amount) over the entire period
 greatest_increase = max(profit_change)
-print(profit_change.index(greatest_increase))
 date_increase = data[profit_change.index(greatest_increase)+1][0]
+
 #the greatest decrease in profits (date and amount) over the entire period
 greatest_decrease = min(profit_change)
 date_decrease = data[profit_change.index(greatest_decrease)+1][0]
 
 #calculating the average change
 total_change = sum(profit_change)
-#come back and figure out why you're getting a positive number
 profit_average_change = total_change / len(profit_change)
-print(profit_average_change)
+
 #create a txt file with the budget analysis results
 f = open(r"C:\\Users\marqu\OneDrive\Desktop\Repositories\Python-Challenge\PyBank\Analysis\budget_results.txt", "w")
 
@@ -53,6 +55,7 @@ f.write(f"Average  Change: ${profit_average_change}\n")
 f.write(f"Greatest Increase in Profits: {date_increase} (${greatest_increase})\n")
 f.write(f"Greatest Decrease in Profits: {date_decrease} (${greatest_decrease})\n")
 
+#printing out results
 print(f"Financial Analysis")
 print("-"*25)
 print(f"Your profit is: ${total_amount}")
