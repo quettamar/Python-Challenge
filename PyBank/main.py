@@ -45,7 +45,8 @@ total_change = sum(profit_change)
 profit_average_change = total_change / len(profit_change)
 
 #create a txt file with the budget analysis results
-f = open(r"C:\\Users\marqu\OneDrive\Desktop\Repositories\Python-Challenge\PyBank\Analysis\budget_results.txt", "w")
+budget_results_path = os.path.join(pathlib.Path(__file__).parent.resolve(), "..", "PyBank", "Analysis", "budget_results.txt")
+f = open(budget_results_path, "w")
 
 f.write(f"Financial Analysis\n")
 f.write("----------------------\n")

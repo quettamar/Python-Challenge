@@ -59,7 +59,8 @@ print(f"Winner = {winner}")
 print("-"*25)
 
 #create a txt file with the election results
-f = open(r"C:\\Users\marqu\OneDrive\Desktop\Repositories\Python-Challenge\PyPoll\Analysis\election_results.txt","w")
+election_results_path = os.path.join(pathlib.Path(__file__).parent.resolve(), "..", "PyPoll", "Analysis", "election_results.txt")
+f = open(election_results_path, "w")
 f.write(f"Election Results\n")
 f.write("-------------------------\n")
 f.write(f"Total Votes: {total_votes}\n")
